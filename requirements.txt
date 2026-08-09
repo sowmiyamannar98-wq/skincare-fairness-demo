@@ -1,0 +1,18 @@
+# CPU-only torch. The default PyPI wheel bundles CUDA and is several GB, which
+# blows the free-tier size limit on both Hugging Face and Streamlit Cloud. The
+# "+cpu" local version forces the small CPU build from the index below.
+#
+# torch is pinned to the version that wrote the checkpoint. An older torch may
+# fail to read a newer checkpoint, so do not relax this without re-testing that
+# armB_acne_resnet50_best.pt still loads.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+torch==2.10.0+cpu
+torchvision==0.25.0+cpu
+
+streamlit>=1.40
+timm>=1.0.7
+pandas>=2.2
+pyarrow>=15.0
+numpy>=2.0
+pillow>=10.0
