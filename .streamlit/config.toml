@@ -1,0 +1,11 @@
+# Matches the accent colours used in the app's own CSS.
+[theme]
+primaryColor = "#6C5CE7"
+
+[server]
+# Uploaded photos are held in memory only; keep the cap low so a large file
+# cannot exhaust the free tier's memory.
+maxUploadSize = 10
+
+[browser]
+gatherUsageStats = false

@@ -1,0 +1,12 @@
+# Additional dependencies for the analysis scripts and notebooks.
+# The demonstrator does not need these, so they are kept out of
+# requirements.txt to keep the deployed build small and fast.
+#
+#   pip install -r requirements.txt -r requirements-analysis.txt
+
+matplotlib>=3.8
+seaborn>=0.13
+scikit-learn>=1.4
+scipy>=1.11
+nbformat>=5.9
+opencv-python>=4.9        # CIELAB conversions for ITA estimation

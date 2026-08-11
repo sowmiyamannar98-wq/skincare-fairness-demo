@@ -34,6 +34,11 @@ for p in (ROOT, os.path.join(ROOT, "scripts")):
     if p not in sys.path:
         sys.path.insert(0, p)
 
+# recommender.py resolves its parquet path relative to the working directory.
+# Streamlit Cloud launches from the repo root, but pinning it here keeps the app
+# runnable from anywhere without editing the audited module.
+os.chdir(ROOT)
+
 from app.dialogue import DialogueManager, SLOTS      # noqa: E402
 from app import safety                               # noqa: E402
 from app.inference import (SeverityModel, ABSTAIN_MESSAGE,   # noqa: E402
