@@ -1,0 +1,34 @@
+# --- raw source datasets: NOT redistributed -----------------------------
+# Licence terms and size both forbid this. data/sephora/ alone is 505 MB and
+# contains a single 270 MB file, over GitHub's 100 MB hard limit. Appendix C of
+# the report states the source datasets are not redistributed; keep it true.
+data/sephora/
+data/fitzpatrick17k/
+
+# --- deployment copies ---------------------------------------------------
+# Generated from app/ and scripts/ (see HANDOFF section 11). Each bundles its
+# own copy of the 91 MB checkpoint, so committing them would triple it.
+# streamlit_cloud/ is already its own git repo and deploys separately.
+hf_space/
+streamlit_cloud/
+
+# --- python --------------------------------------------------------------
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# --- os / editor ---------------------------------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.claude/settings.local.json
+
+# --- kept deliberately, despite being regenerable ------------------------
+# reports/figures/      the report's evidence, 22 files, ~4.8 MB
+# data/processed/       parquet layer the recommender needs to run, ~2.8 MB
+# data/trained weights/ the checkpoint, 91 MB, under GitHub's limit
+# data/kaggle_out/      downloaded notebook outputs the analysis scripts read

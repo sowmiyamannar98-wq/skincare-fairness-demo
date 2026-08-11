@@ -1,0 +1,18 @@
+{
+  "threshold": 0.85,
+  "target_accuracy": 0.85,
+  "min_coverage": 0.5,
+  "coverage": 0.6767330130404942,
+  "selective_accuracy": 0.8509127789046653,
+  "per_group": {
+    "Light": {
+      "coverage": 0.6970260223048327,
+      "accuracy": 0.8506666666666667
+    },
+    "Medium": {
+      "coverage": 0.6892265193370166,
+      "accuracy": 0.8637274549098196
+    }
+  },
+  "derivation": "lowest threshold meeting 85% selective accuracy while retaining >=50% coverage"
+}
