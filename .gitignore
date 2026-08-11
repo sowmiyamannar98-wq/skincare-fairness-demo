@@ -25,7 +25,7 @@ venv/
 Thumbs.db
 .vscode/
 .idea/
-.claude/settings.local.json
+.claude/
 
 # --- kept deliberately, despite being regenerable ------------------------
 # reports/figures/      the report's evidence, 22 files, ~4.8 MB
