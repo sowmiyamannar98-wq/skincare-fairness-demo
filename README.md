@@ -1,5 +1,23 @@
 # Does Bias Propagate? — Fairness in Acne Severity Assessment and Skincare Recommendation
 
+### ▶ Live demonstrator: **https://skincare-fairness-demo.streamlit.app/**
+
+Upload a photo, answer four questions, and see the recommendations the pipeline
+produces. **A cosmetic recommendation tool, not a medical device — it does not
+diagnose.** The app may take ~30 seconds to wake if it has been idle.
+
+Source for the deployed copy:
+[github.com/sowmiyamannar98-wq/skincare-fairness-demo](https://github.com/sowmiyamannar98-wq/skincare-fairness-demo)
+
+> **There is no language model anywhere in the recommendation path.** The
+> classifier, the mapping table and the ranking function are the only things
+> that determine what a user is shown, and all three are deterministic. That is
+> what makes the propagation measured in RQ2 attributable to the classifier
+> alone, and it is a deliberate architectural constraint rather than a
+> simplification. Do not add one.
+
+---
+
 Codebase for the MSc dissertation. Full rationale in
 [`MSc_Project_Proposal_Skin_Fairness.md`](MSc_Project_Proposal_Skin_Fairness.md).
 
@@ -31,14 +49,30 @@ scripts/
   03_rq5_review_audit.py  RQ5 representational audit + bootstrapped CIs
 kaggle/
   nb1_dataprep_ita_gate.*        ITA derivation + go/no-go gate (CPU, run first)
-  nb2_train_armA_fitzpatrick.*   Arm A ResNet-50 (GPU, overnight)
+  nb2_train_armA_fitzpatrick.*   Arm A ResNet-50 (GPU) — never run, see below
   nb3_train_armB_acne04.*        Arm B ResNet-50 + repeated CV (GPU)
   build_notebooks.py             regenerates the .ipynb from the .py sources
-reports/                  markdown reports + figures/
+  executed/                      the notebooks AS RUN, with outputs retained
+app/                      deterministic demonstrator (no language model)
+reports/                  markdown reports + figures/ (22 figures)
+report_build/             the dissertation, and the script that builds it
 ```
 
 Each `kaggle/*.py` is the editable source; the matching `.ipynb` (built by
-`build_notebooks.py`) is what you upload to Kaggle.
+`build_notebooks.py`) is what you upload to Kaggle. Those sources carry no
+outputs. **`kaggle/executed/` holds the same notebooks as actually run on
+Kaggle's GPU, outputs intact**, so every number in the dissertation can be
+traced to the run that produced it — see
+[`kaggle/executed/README.md`](kaggle/executed/README.md) for per-notebook
+execution status and verification against the reported values.
+
+Two run records are absent or partial, both for documented reasons. **NB2 never
+ran**: Arm A required a copy of Fitzpatrick17k pairing its images with its
+ground-truth tone metadata, and no such copy could be obtained across six
+attempted sources. That is why RQ6 is unanswered, and it is reported as a
+limitation rather than omitted. **NB4 has one unrun plotting cell**, whose
+figure was regenerated locally by `scripts/10_regenerate_kaggle_figures.py`;
+every analysis cell in that notebook ran.
 
 ---
 
